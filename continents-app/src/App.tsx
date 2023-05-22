@@ -5,10 +5,12 @@ import DisplayContinents from "./components/DisplayContinents";
 function App() {
   return (
     <div className="app">
-      <header className="app__header">
+      <header className="header">
         <h1>Continents</h1>
       </header>
-      <DisplayContinents />
+      <div className="grid">
+        <DisplayContinents />
+      </div>
     </div>
   );
 }

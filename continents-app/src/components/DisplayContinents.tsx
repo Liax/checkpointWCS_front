@@ -24,7 +24,7 @@ function DisplayContinents() {
   console.log(data);
 
   return data.continents.map(({ id, name }: ContinentsProps) => (
-    <div key={id}>
+    <div className="grid__item" key={id}>
       <h3>{name}</h3>
     </div>
   ));
