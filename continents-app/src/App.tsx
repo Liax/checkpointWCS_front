@@ -1,13 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import DisplayContinents from "./components/DisplayContinents";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="app__header">
         <h1>Continents</h1>
       </header>
+      <DisplayContinents />
     </div>
   );
 }
