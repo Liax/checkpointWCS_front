@@ -1,10 +1,13 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
+import Continent from "./Continent";
+import { useNavigate } from "react-router-dom";
 
 const GET_CONTINENTS = gql`
   query getContinents {
     continents {
       name
+      code
       countries {
         code
       }
@@ -12,22 +15,34 @@ const GET_CONTINENTS = gql`
   }
 `;
 
-interface ContinentsProps {
-  id: number;
-  name: string | undefined;
+export interface Continents {
+  code: string;
+  name: string;
 }
 
 function DisplayContinents() {
   const { loading, error, data } = useQuery(GET_CONTINENTS);
+  const navigate = useNavigate();
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
-  console.log(data);
 
-  return data.continents.map(({ id, name }: ContinentsProps) => (
-    <div className="grid__item" key={id}>
-      <h3>{name}</h3>
+  return (
+    <div>
+      <h2>Continents</h2>
+      <div className="grid">
+        {data.continents.map(({ code, name }: Continents) => (
+          <div
+            className="grid__item"
+            key={code}
+            onClick={() => navigate(`/${code}`)}
+          >
+            {name}
+          </div>
+        ))}
+      </div>
     </div>
-  ));
+  );
 }
 
 export default DisplayContinents;

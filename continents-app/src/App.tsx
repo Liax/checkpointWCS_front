@@ -1,16 +1,16 @@
 import React from "react";
 import "./App.css";
 import DisplayContinents from "./components/DisplayContinents";
+import { Routes, Route } from "react-router-dom";
+import Continent from "./components/Continent";
 
 function App() {
   return (
-    <div className="app">
-      <header className="header">
-        <h1>Continents</h1>
-      </header>
-      <div className="grid">
-        <DisplayContinents />
-      </div>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<DisplayContinents />}></Route>
+        <Route path="/:continentCode" element={<Continent />}></Route>
+      </Routes>
     </div>
   );
 }
